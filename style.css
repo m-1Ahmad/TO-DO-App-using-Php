@@ -1,0 +1,213 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Flex container to center elements */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 30px;
+  }
+
+.header h1 {
+    font-size: 2.5rem;
+    color:black;
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+
+.logout-form {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logout-form button {
+    background-color: #ff5e62;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.logout-form button:hover {
+    background-color: #ff9966;
+}
+
+/* Container */
+.container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #74ebd5;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #ACB6E5;
+}
+
+/* Input fields */
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Task List */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    padding: 15px;
+    background: #f9f9f9;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.task-item:hover {
+    transform: translateY(-3px);
+}
+
+.task-item button {
+    margin-left: 10px;
+}
+
+/* Edit Task Form */
+.edit-task-form {
+    display: none;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+}
+
+/* Signup & Login Styles */
+.signup-container, .login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Center the signup/login forms in the middle of the viewport */
+.signup-container, .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-container h2, .login-container h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+.signup-container input[type="text"], 
+.signup-container input[type="email"], 
+.signup-container input[type="password"],
+.login-container input[type="text"], 
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.signup-container input[type="submit"], 
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: #74ebd5;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.signup-container input[type="submit"]:hover, 
+.login-container input[type="submit"]:hover {
+    background: #ACB6E5;
+}
+
+.signup-container .login-link, .login-container .login-link {
+    margin-top: 20px;
+}
+
+.signup-container .login-link a, 
+.login-container .login-link a {
+    color: #ff5e62;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.signup-container .login-link a:hover, 
+.login-container .login-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 17px;
+}
