@@ -1,0 +1,73 @@
+<?php
+require_once 'database.php';
+require_once 'validate.php';
+class User{
+    private $db;
+    public function __construct(){
+        $this->db = new Database();
+    }
+
+    public function registration($name,$email,$password,$conf){
+        $nameError = Validation::validateNotEmpty($name,"Name cannot be empty");
+        $emailError = Validation::validateEmail($email);
+        $passError = Validation::validatePassword($password);
+        $confError = Validation::confirmation($password,$conf);
+        
+        if($nameError || $emailError || $passError || $confError){
+            return ['nameError' => $nameError, 'emailError' => $emailError, 'passwordError'=>$passError, 'confError'=>$confError];
+        }
+        if($this->usercheck($email)){
+            return ['emailError'=>'Email Already Exixsts'];
+        }
+
+        $pass = md5($password);
+        $sql = "Insert into users (user_name,email,pass) values (?,?,?)";
+        $this->db->query($sql,"sss",[$name,$email,$pass]);
+
+        return [];
+    }
+
+    public function loggedin($email,$password){
+        $emailError = Validation::validateEmail($email);
+        $passError = Validation::validateNotEmpty($password,"Password cannot be empty");
+        if($emailError || $passError){
+            return ['emailError' => $emailError, 'passwordError'=>$passError];
+        }
+
+        $sql = "select * from users where email = ?";
+        $stmt = $this->db->query($sql,"s",[$email]);
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        
+        if(!$user){
+            return ['emailError'=>'Email does not exists'];
+        }
+        if($user['pass']!== md5($password)){
+            return ['passwordError'=>'Incorrect Password!'];
+        }
+        return [];
+    }
+
+    public function usercheck($email){
+        $sql = "Select * from users where email = ?";
+        $stmt = $this->db->query($sql,"s",[$email]);
+        return $stmt->get_result()->num_rows > 0;
+    }
+
+    public function userid($email){
+        $sql = "Select * from users where email = ?";
+        $stmt = $this->db->query($sql,"s",[$email]);
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        return $user ? $user['id'] : null; 
+    }
+
+    public function username($email){
+        $sql = "Select * from users where email = ?";
+        $stmt = $this->db->query($sql,"s",[$email]);
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        return $user ? $user['user_name'] : null; 
+    }
+}
+?>
