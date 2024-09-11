@@ -1,16 +1,17 @@
 <?php
 session_start();
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']===true){
-    header('location: homepage.php');
-    exit;
-}else if(!isset($_SESSION['signup']) || $_SESSION['signup'] !== true){
-    header('Location: signup.php');
-    exit;
-}
+
 
 require_once 'user.php';
 require_once 'validate.php';
-
+require 'vendor\autoload.php';
+if(loggedin()){
+    header('location: homepage.php');
+    exit;
+}else if(!signnedup()){
+    header('Location: signup.php');
+    exit;
+}
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $pass = $_POST['pass'];
@@ -21,6 +22,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             $user->register($_SESSION['name'],$_SESSION['email'],$_SESSION['pass']);
             $_SESSION['id']= $user->userid($_SESSION['email']);
             $_SESSION['loggedin'] = true;
+            $_SESSION['signup'] = false;
             header('Location:homepage.php');
             exit();
         }else{
