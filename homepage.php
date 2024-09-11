@@ -1,7 +1,8 @@
 <?php
 session_start();
+require 'vendor\autoload.php';
 require_once 'task.php';
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+if(!loggedin()){
     header('Location: login.php');
     exit;
 }
