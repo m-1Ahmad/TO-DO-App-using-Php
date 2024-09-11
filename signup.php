@@ -14,14 +14,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $pass = $_POST["Password"];
     $c_pass = $_POST["confirmation"];
     
-    $error = $user->registration($name,$email,$pass,$c_pass);
+    $error = $user->validation($name,$email,$pass,$c_pass);
 
     if (empty($error)){
-        $_SESSION['loggedin'] = true;
+        $_SESSION['signup'] = true;
         $_SESSION['name'] = $name;
         $_SESSION['email'] = $email;
-        $_SESSION['id'] = $user->userid($email);
-        header('Location: homepage.php');
+        $_SESSION['pass'] = $pass;
+        $_SESSION['OTP'] = $user->generateOTP($email);
+        header('Location: email.php');
         exit();
     }
 }
