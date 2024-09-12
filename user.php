@@ -81,11 +81,11 @@ class User{
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'mahmad0449939@gmail.com';
-        $mail->Password = 'kdlebohbzrncbafc';
+        $mail->Username = 'sample@gmail.com';  //use your mail in this
+        $mail->Password = '16digitpasscode'; //use 16 digit passcode from google app password
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('mahmad0449939@gmail.com');
+        $mail->setFrom('sample@gmail.com'); //use your mail
         $mail->addAddress($email);
         $mail->isHTML(true);
         $subject = "Important annoucment";
